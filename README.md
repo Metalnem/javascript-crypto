@@ -1,2 +1,1 @@
-# javascript-crypto
-JavaScript cryptography
+# JavaScript cryptography [![Code Climate](https://codeclimate.com/github/Metalnem/javascript-crypto/badges/gpa.svg)](https://codeclimate.com/github/Metalnem/javascript-crypto) [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/metalnem/javascript-crypto/master/LICENSE)
