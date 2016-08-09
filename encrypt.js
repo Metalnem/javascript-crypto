@@ -7,7 +7,7 @@
 	const nonceSize = 12;
 
 	function append(buf1, buf2) {
-		var result = new Uint8Array(buf1.byteLength + buf2.byteLength);
+		const result = new Uint8Array(buf1.byteLength + buf2.byteLength);
 
 		result.set(new Uint8Array(buf1), 0);
 		result.set(new Uint8Array(buf2), buf1.byteLength);
