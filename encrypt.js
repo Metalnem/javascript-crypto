@@ -15,43 +15,41 @@
 		return result.buffer;
 	}
 
-	function generateKey() {
-		const options = {
-			name: algorithm,
-			length: keySize
-		};
+	class Encryption {
+		generateKey() {
+			const options = {
+				name: algorithm,
+				length: keySize
+			};
 
-		return subtle.generateKey(options, false, ['encrypt', 'decrypt']);
+			return subtle.generateKey(options, false, ['encrypt', 'decrypt']);
+		}
+
+		encrypt(message, key) {
+			const nonce = crypto.getRandomValues(new Uint8Array(nonceSize));
+
+			const options = {
+				name: algorithm,
+				iv: nonce
+			};
+
+			return subtle.encrypt(options, key, message).then(ciphertext => {
+				return append(nonce, ciphertext);
+			});
+		}
+
+		decrypt(message, key) {
+			const nonce = message.slice(0, nonceSize);
+			const ciphertext = message.slice(nonceSize);
+
+			const options = {
+				name: algorithm,
+				iv: nonce
+			};
+
+			return subtle.decrypt(options, key, ciphertext);
+		}
 	}
 
-	function encrypt(message, key) {
-		const nonce = crypto.getRandomValues(new Uint8Array(nonceSize));
-
-		const options = {
-			name: algorithm,
-			iv: nonce
-		};
-
-		return subtle.encrypt(options, key, message).then(ciphertext => {
-			return append(nonce, ciphertext);
-		});
-	}
-
-	function decrypt(message, key) {
-		const nonce = message.slice(0, nonceSize);
-		const ciphertext = message.slice(nonceSize);
-
-		const options = {
-			name: algorithm,
-			iv: nonce
-		};
-
-		return subtle.decrypt(options, key, ciphertext);
-	}
-
-	return {
-		generateKey: generateKey,
-		encrypt: encrypt,
-		decrypt: decrypt
-	};
+	return new Encryption();
 })();

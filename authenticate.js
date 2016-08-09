@@ -5,36 +5,34 @@
 	const algorithm = 'HMAC';
 	const hash = 'SHA-256';
 
-	function generateKey() {
-		const options = {
-			name: algorithm,
-			hash: {
-				name: hash
-			}
-		};
+	class Authentication {
+		generateKey() {
+			const options = {
+				name: algorithm,
+				hash: {
+					name: hash
+				}
+			};
 
-		return subtle.generateKey(options, false, ['sign', 'verify']);
+			return subtle.generateKey(options, false, ['sign', 'verify']);
+		}
+
+		sign(message, key) {
+			const options = {
+				name: algorithm
+			};
+
+			return subtle.sign(options, key, message);
+		}
+
+		verify(signature, message, key) {
+			const options = {
+				name: algorithm
+			};
+
+			return subtle.verify(options, key, signature, message);
+		}
 	}
 
-	function sign(message, key) {
-		const options = {
-			name: algorithm
-		};
-
-		return subtle.sign(options, key, message);
-	}
-
-	function verify(signature, message, key) {
-		const options = {
-			name: algorithm
-		};
-
-		return subtle.verify(options, key, signature, message);
-	}
-
-	return {
-		generateKey: generateKey,
-		sign: sign,
-		verify: verify
-	};
+	return new Authentication();
 })();
