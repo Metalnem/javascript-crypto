@@ -1,36 +1,30 @@
-(function () {
-	const crypto = window.crypto;
-	const subtle = crypto.subtle;
-
-	const algorithm = 'HMAC';
-	const hash = 'SHA-256';
-
+window.authentication = (function () {
 	class Authentication {
 		generateKey() {
 			const options = {
-				name: algorithm,
+				name: 'HMAC',
 				hash: {
-					name: hash
+					name: 'SHA-256'
 				}
 			};
 
-			return subtle.generateKey(options, false, ['sign', 'verify']);
+			return window.crypto.subtle.generateKey(options, false, ['sign', 'verify']);
 		}
 
 		sign(message, key) {
 			const options = {
-				name: algorithm
+				name: 'HMAC'
 			};
 
-			return subtle.sign(options, key, message);
+			return window.crypto.subtle.sign(options, key, message);
 		}
 
 		verify(signature, message, key) {
 			const options = {
-				name: algorithm
+				name: 'HMAC'
 			};
 
-			return subtle.verify(options, key, signature, message);
+			return window.crypto.subtle.verify(options, key, signature, message);
 		}
 	}
 

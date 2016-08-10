@@ -1,53 +1,44 @@
-(function () {
-	const crypto = window.crypto;
-	const subtle = crypto.subtle;
-
-	const algorithm = 'AES-GCM';
-	const keySize = 256;
-	const nonceSize = 12;
-
-	function append(buf1, buf2) {
-		const result = new Uint8Array(buf1.byteLength + buf2.byteLength);
-
-		result.set(new Uint8Array(buf1), 0);
-		result.set(new Uint8Array(buf2), buf1.byteLength);
-
-		return result.buffer;
-	}
-
+window.encryption = (function () {
 	class Encryption {
 		generateKey() {
 			const options = {
-				name: algorithm,
-				length: keySize
+				name: 'AES-GCM',
+				length: 256
 			};
 
-			return subtle.generateKey(options, false, ['encrypt', 'decrypt']);
+			return window.crypto.subtle.generateKey(options, false, ['encrypt', 'decrypt']);
 		}
 
 		encrypt(message, key) {
-			const nonce = crypto.getRandomValues(new Uint8Array(nonceSize));
+			const nonceSize = 12;
+			const nonce = window.crypto.getRandomValues(new Uint8Array(nonceSize));
 
 			const options = {
-				name: algorithm,
+				name: 'AES-GCM',
 				iv: nonce
 			};
 
-			return subtle.encrypt(options, key, message).then(ciphertext => {
-				return append(nonce, ciphertext);
+			return window.crypto.subtle.encrypt(options, key, message).then(ciphertext => {
+				const final = new Uint8Array(nonce.byteLength + ciphertext.byteLength);
+
+				final.set(new Uint8Array(nonce), 0);
+				final.set(new Uint8Array(ciphertext), nonce.byteLength);
+
+				return final.buffer;
 			});
 		}
 
 		decrypt(message, key) {
+			const nonceSize = 12;
 			const nonce = message.slice(0, nonceSize);
 			const ciphertext = message.slice(nonceSize);
 
 			const options = {
-				name: algorithm,
+				name: 'AES-GCM',
 				iv: nonce
 			};
 
-			return subtle.decrypt(options, key, ciphertext);
+			return window.crypto.subtle.decrypt(options, key, ciphertext);
 		}
 	}
 

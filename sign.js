@@ -1,41 +1,34 @@
-(function () {
-	const crypto = window.crypto;
-	const subtle = crypto.subtle;
-
-	const algorithm = 'ECDSA';
-	const curve = 'P-256';
-	const hash = 'SHA-256';
-
+window.signing = (function () {
 	class Signing {
 		generateKey() {
 			const options = {
-				name: algorithm,
-				namedCurve: curve
+				name: 'ECDSA',
+				namedCurve: 'P-256'
 			};
 
-			return subtle.generateKey(options, false, ['sign', 'verify']);
+			return window.crypto.subtle.generateKey(options, false, ['sign', 'verify']);
 		}
 
 		sign(message, privateKey) {
 			const options = {
-				name: algorithm,
+				name: 'ECDSA',
 				hash: {
-					name: hash
+					name: 'SHA-256'
 				}
 			};
 
-			return subtle.sign(options, privateKey, message);
+			return window.crypto.subtle.sign(options, privateKey, message);
 		}
 
 		verify(signature, message, publicKey) {
 			const options = {
-				name: algorithm,
+				name: 'ECDSA',
 				hash: {
-					name: hash
+					name: 'SHA-256'
 				}
 			};
 
-			return subtle.verify(options, publicKey, signature, message);
+			return window.crypto.subtle.verify(options, publicKey, signature, message);
 		}
 	}
 
