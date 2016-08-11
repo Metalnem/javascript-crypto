@@ -30,8 +30,36 @@
 		});
 	}
 
-	function verifyPasswordHash() {
-		return false;
+	function verifyPasswordHash(passwordHash, password) {
+		const encoder = new TextEncoder('utf-8');
+		const buf = encoder.encode(password);
+
+		const options = {
+			name: 'PBKDF2'
+		};
+
+		return window.crypto.subtle.importKey('raw', buf, options, false, ['deriveBits']).then(key => {
+			const saltSize = 16;
+			const salt = passwordHash.slice(0, saltSize);
+
+			const options = {
+				name: 'PBKDF2',
+				salt: salt,
+				iterations: 86000,
+				hash: {
+					name: 'SHA-256'
+				}
+			};
+
+			return window.crypto.subtle.deriveBits(options, key, 96).then(newHash => {
+				const oldHash = passwordHash.slice(saltSize);
+
+				const oldView = new Uint8Array(oldHash);
+				const newView = new Uint8Array(newHash);
+
+				return newView.every((element, index) => element === oldView[index]);
+			});
+		});
 	}
 
 	exports.hashPassword = hashPassword;
