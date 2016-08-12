@@ -5,7 +5,7 @@
 			namedCurve: 'P-256'
 		};
 
-		return window.crypto.subtle.generateKey(options, false, ['sign', 'verify']);
+		return window.crypto.subtle.generateKey(options, true, ['sign', 'verify']);
 	}
 
 	function sign(message, privateKey) {
