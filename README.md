@@ -5,4 +5,6 @@
 [3] [Final post on Javascript crypto](https://rdist.root.org/2010/11/29/final-post-on-javascript-crypto/)  
 [4] [Javascript Crypto Is Useful](https://vnhacker.blogspot.rs/2014/06/why-javascript-crypto-is-useful.html)  
 [5] [Javascript Cryptography Considered Harmful](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/)  
-[6] [What’s wrong with in-browser cryptography?](https://tonyarcieri.com/whats-wrong-with-webcrypto)
+[6] [What’s wrong with in-browser cryptography?](https://tonyarcieri.com/whats-wrong-with-webcrypto)  
+[7] [Nonce-Disrespecting Adversaries: Practical Forgery Attacks on GCM in TLS](https://www.usenix.org/system/files/conference/woot16/woot16-paper-bock.pdf)  
+[8] [GCM cannot be used with random nonces](https://github.com/gtank/cryptopasta/issues/14)
