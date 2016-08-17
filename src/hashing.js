@@ -40,7 +40,8 @@
 
 		return window.crypto.subtle.importKey('raw', buf, options, false, ['deriveBits']).then(key => {
 			const saltSize = 16;
-			const salt = passwordHash.slice(0, saltSize);
+			const view = new Uint8Array(passwordHash);
+			const salt = view.subarray(0, saltSize);
 
 			const options = {
 				name: 'PBKDF2',
@@ -52,9 +53,7 @@
 			};
 
 			return window.crypto.subtle.deriveBits(options, key, 96).then(newHash => {
-				const oldHash = passwordHash.slice(saltSize);
-
-				const oldView = new Uint8Array(oldHash);
+				const oldView = view.subarray(saltSize);
 				const newView = new Uint8Array(newHash);
 
 				return newView.every((element, index) => element === oldView[index]);

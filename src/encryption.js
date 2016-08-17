@@ -29,8 +29,9 @@
 
 	function decrypt(message, key) {
 		const nonceSize = 12;
-		const nonce = message.slice(0, nonceSize);
-		const ciphertext = message.slice(nonceSize);
+		const view = new Uint8Array(message);
+		const nonce = view.subarray(0, nonceSize);
+		const ciphertext = view.subarray(nonceSize);
 
 		const options = {
 			name: 'AES-GCM',
