@@ -64,4 +64,4 @@
 
 	exports.hashPassword = hashPassword;
 	exports.verifyPasswordHash = verifyPasswordHash;
-})();
+})(window);
