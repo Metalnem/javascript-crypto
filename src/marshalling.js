@@ -4,7 +4,12 @@
 	}
 
 	function importPublicKey(publicKey) {
-		return window.crypto.subtle.importKey('spki', publicKey, true, ['verify']);
+		const options = {
+			name: 'ECDSA',
+			namedCurve: 'P-256'
+		};
+
+		return window.crypto.subtle.importKey('spki', publicKey, options, true, ['verify']);
 	}
 
 	function exportPrivateKey(privateKey) {
@@ -12,7 +17,12 @@
 	}
 
 	function importPrivateKey(privateKey) {
-		return window.crypto.subtle.importKey('pkcs8', privateKey, true, ['sign']);
+		const options = {
+			name: 'ECDSA',
+			namedCurve: 'P-256'
+		};
+
+		return window.crypto.subtle.importKey('pkcs8', privateKey, options, true, ['sign']);
 	}
 
 	exports.exportPublicKey = exportPublicKey;
