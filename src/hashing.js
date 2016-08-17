@@ -13,7 +13,7 @@
 			const options = {
 				name: 'PBKDF2',
 				salt: salt,
-				iterations: 86000,
+				iterations: 500000,
 				hash: {
 					name: 'SHA-256'
 				}
@@ -45,7 +45,7 @@
 			const options = {
 				name: 'PBKDF2',
 				salt: salt,
-				iterations: 86000,
+				iterations: 500000,
 				hash: {
 					name: 'SHA-256'
 				}

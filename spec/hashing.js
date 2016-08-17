@@ -9,4 +9,18 @@ describe('Hashing', () => {
 			});
 		});
 	});
+
+	it('generate password hash and verify that it runs long enough', done => {
+		const password = 'Super_secret123!';
+		const from = performance.now();
+
+		window.hashPassword(password).then(() => {
+			const to = performance.now();
+			const duration = to - from;
+
+			expect(duration).toBeGreaterThan(300);
+			expect(duration).toBeLessThan(1000);
+			done();
+		});
+	});
 });
