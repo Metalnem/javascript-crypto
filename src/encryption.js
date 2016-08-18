@@ -37,6 +37,12 @@
 
 		const nonceSize = 12;
 		const view = isView ? message : new Uint8Array(message);
+
+		if (view.length < nonceSize) {
+			const message = 'The provided data is too small';
+			return Promise.reject(new DOMException(message));
+		}
+
 		const nonce = view.subarray(0, nonceSize);
 		const ciphertext = view.subarray(nonceSize);
 

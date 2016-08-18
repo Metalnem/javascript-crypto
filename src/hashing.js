@@ -48,6 +48,12 @@
 		return window.crypto.subtle.importKey('raw', buf, options, false, ['deriveBits']).then(key => {
 			const saltSize = 16;
 			const view = isView ? passwordHash : new Uint8Array(passwordHash);
+
+			if (view.length < saltSize) {
+				const message = 'The provided data is too small';
+				return Promise.reject(new DOMException(message));
+			}
+
 			const salt = view.subarray(0, saltSize);
 
 			const options = {
