@@ -20,6 +20,6 @@ describe('Signing', () => {
 							});
 					});
 				});
-		});
+		}).catch(error => done.fail(error.message));
 	});
 });

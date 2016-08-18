@@ -11,6 +11,6 @@ describe('Encryption', () => {
 					done();
 				});
 			});
-		});
+		}).catch(error => done.fail(error.message));
 	});
 });

@@ -7,7 +7,7 @@ describe('Hashing', () => {
 				expect(valid).toBe(true);
 				done();
 			});
-		});
+		}).catch(error => done.fail(error.message));
 	});
 
 	it('generate password hash and verify that it runs long enough', done => {
@@ -21,6 +21,6 @@ describe('Hashing', () => {
 			expect(duration).toBeGreaterThan(300);
 			expect(duration).toBeLessThan(1000);
 			done();
-		});
+		}).catch(error => done.fail(error.message));
 	});
 });

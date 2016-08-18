@@ -10,6 +10,6 @@ describe('Authentication', () => {
 					done();
 				});
 			});
-		});
+		}).catch(error => done.fail(error.message));
 	});
 });
