@@ -28,8 +28,15 @@
 	}
 
 	function decrypt(message, key) {
+		const isView = ArrayBuffer.isView(message);
+
+		if (!isView && !(message instanceof ArrayBuffer)) {
+			const message = 'Failed to execute decrypt: The provided value is not of type ArrayBuffer or ArrayBufferView';
+			return Promise.reject(new TypeError(message));
+		}
+
 		const nonceSize = 12;
-		const view = new Uint8Array(message);
+		const view = isView ? message : new Uint8Array(message);
 		const nonce = view.subarray(0, nonceSize);
 		const ciphertext = view.subarray(nonceSize);
 

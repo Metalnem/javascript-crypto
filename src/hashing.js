@@ -31,6 +31,13 @@
 	}
 
 	function verifyPasswordHash(passwordHash, password) {
+		const isView = ArrayBuffer.isView(passwordHash);
+
+		if (!isView && !(passwordHash instanceof ArrayBuffer)) {
+			const message = 'Failed to execute verifyPasswordHash: The provided value is not of type ArrayBuffer or ArrayBufferView';
+			return Promise.reject(new TypeError(message));
+		}
+
 		const encoder = new TextEncoder('utf-8');
 		const buf = encoder.encode(password);
 
@@ -40,7 +47,7 @@
 
 		return window.crypto.subtle.importKey('raw', buf, options, false, ['deriveBits']).then(key => {
 			const saltSize = 16;
-			const view = new Uint8Array(passwordHash);
+			const view = isView ? passwordHash : new Uint8Array(passwordHash);
 			const salt = view.subarray(0, saltSize);
 
 			const options = {
