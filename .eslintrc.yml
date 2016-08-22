@@ -18,3 +18,4 @@ rules:
   semi:
     - 2
     - always
+  no-var: 2
