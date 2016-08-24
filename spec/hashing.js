@@ -19,7 +19,7 @@ describe('Hashing', () => {
 			const duration = to - from;
 
 			expect(duration).toBeGreaterThan(300);
-			expect(duration).toBeLessThan(1000);
+			expect(duration).toBeLessThan(700);
 			done();
 		}).catch(error => done.fail(error.message));
 	});

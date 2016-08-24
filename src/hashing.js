@@ -19,7 +19,7 @@
 				}
 			};
 
-			return window.crypto.subtle.deriveBits(options, key, 96).then(hash => {
+			return window.crypto.subtle.deriveBits(options, key, 128).then(hash => {
 				const final = new Uint8Array(salt.byteLength + hash.byteLength);
 
 				final.set(new Uint8Array(salt), 0);
@@ -65,7 +65,7 @@
 				}
 			};
 
-			return window.crypto.subtle.deriveBits(options, key, 96).then(newHash => {
+			return window.crypto.subtle.deriveBits(options, key, 128).then(newHash => {
 				const oldView = view.subarray(saltSize);
 				const newView = new Uint8Array(newHash);
 
