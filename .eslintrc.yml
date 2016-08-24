@@ -19,3 +19,4 @@ rules:
     - 2
     - always
   no-var: 2
+  eqeqeq: 2
