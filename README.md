@@ -25,3 +25,4 @@ Web Cryptography API [[1](https://www.w3.org/TR/WebCryptoAPI/)] is an standardiz
 [8] [What’s wrong with in-browser cryptography?](https://tonyarcieri.com/whats-wrong-with-webcrypto)  
 [9] [Nonce-Disrespecting Adversaries: Practical Forgery Attacks on GCM in TLS](https://www.usenix.org/system/files/conference/woot16/woot16-paper-bock.pdf)  
 [10] [GCM cannot be used with random nonces](https://github.com/gtank/cryptopasta/issues/14)
+[11] [Web Cryptography API Use Cases](https://www.w3.org/TR/2013/WD-webcrypto-usecases-20130108/)
