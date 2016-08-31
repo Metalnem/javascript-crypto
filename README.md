@@ -26,6 +26,19 @@ const plaintext = ciphertext.then(ciphertext => {
 plaintext.then(plaintext => console.log(plaintext));
 ```
 
+### Authentication
+```javaScript
+const message = "I'm cooking MC's like a pound of bacon";
+const encoded = new TextEncoder('utf-8').encode(message);
+const key = window.newMacKey();
+
+const mac = key.then(key => window.generateMac(encoded, key))
+mac.then(mac => console.log(new Uint8Array(mac)));
+
+const valid = mac.then(mac => key.then(key => window.verifyMac(mac, encoded, key)));
+valid.then(valid => console.log(valid));
+```
+
 ## Browser compatibility
 
 - Edge 12
