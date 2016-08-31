@@ -5,7 +5,7 @@
 			length: 256
 		};
 
-		return window.crypto.subtle.generateKey(options, false, ['encrypt', 'decrypt']);
+		return window.crypto.subtle.generateKey(options, true, ['encrypt', 'decrypt']);
 	}
 
 	function encrypt(message, key) {

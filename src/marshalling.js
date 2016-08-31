@@ -1,4 +1,17 @@
 (function (exports) {
+	function exportEncryptionKey(key) {
+		return window.crypto.subtle.exportKey('raw', key);
+	}
+
+	function importEncryptionKey(key) {
+		const options = {
+			name: 'AES-GCM',
+			length: 256
+		};
+
+		return window.crypto.subtle.importKey('raw', key, options, true, ['encrypt', 'decrypt']);
+	}
+
 	function exportPublicKey(publicKey) {
 		return window.crypto.subtle.exportKey('spki', publicKey);
 	}
@@ -25,6 +38,8 @@
 		return window.crypto.subtle.importKey('pkcs8', privateKey, options, true, ['sign']);
 	}
 
+	exports.exportEncryptionKey = exportEncryptionKey;
+	exports.importEncryptionKey = importEncryptionKey;
 	exports.exportPublicKey = exportPublicKey;
 	exports.importPublicKey = importPublicKey;
 	exports.exportPrivateKey = exportPrivateKey;
