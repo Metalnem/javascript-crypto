@@ -39,6 +39,19 @@ const valid = mac.then(mac => key.then(key => window.verifyMac(mac, encoded, key
 valid.then(valid => console.log(valid));
 ```
 
+### Signing
+```javaScript
+const message = "I'm cooking MC's like a pound of bacon";
+const encoded = new TextEncoder('utf-8').encode(message);
+const key = window.newSigningKey();
+
+const signature = key.then(key => window.sign(encoded, key.privateKey));
+signature.then(signature => console.log(new Uint8Array(signature)));
+
+const valid = signature.then(signature => key.then(key => window.verify(signature, encoded, key.publicKey)));
+valid.then(valid => console.log(valid));
+```
+
 ## Browser compatibility
 
 - Edge 12
