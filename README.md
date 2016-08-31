@@ -52,6 +52,17 @@ const valid = signature.then(signature => key.then(key => window.verify(signatur
 valid.then(valid => console.log(valid));
 ```
 
+### Hashing
+```javaScript
+const password = 'password12345';
+
+const hash = window.hashPassword(password);
+hash.then(hash => console.log(new Uint8Array(hash)));
+
+const valid = hash.then(hash => window.verifyPasswordHash(hash, password));
+valid.then(valid => console.log(valid));
+```
+
 ## Browser compatibility
 
 - Edge 12
