@@ -45,10 +45,10 @@ const message = "I'm cooking MC's like a pound of bacon";
 const encoded = new TextEncoder('utf-8').encode(message);
 const key = window.newSigningKey();
 
-const signature = key.then(key => window.sign(encoded, key.privateKey));
-signature.then(signature => console.log(new Uint8Array(signature)));
+const sig = key.then(key => window.sign(encoded, key.privateKey));
+sig.then(sig => console.log(new Uint8Array(sig)));
 
-const valid = signature.then(signature => key.then(key => window.verify(signature, encoded, key.publicKey)));
+const valid = sig.then(sig => key.then(key => window.verify(sig, encoded, key.publicKey)));
 valid.then(valid => console.log(valid));
 ```
 
