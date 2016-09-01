@@ -8,31 +8,61 @@ Web Cryptography API [[1](https://www.w3.org/TR/WebCryptoAPI/)] is an standardiz
 
 ```javaScript
 Promise<CryptoKey> newEncryptionKey();
-Promise<ArrayBuffer> encrypt(ArrayBuffer|ArrayBufferView plaintext, CryptoKey key);
-Promise<ArrayBuffer> decrypt(ArrayBuffer|ArrayBufferView ciphertext, CryptoKey key);
+
+Promise<ArrayBuffer> encrypt(
+	ArrayBuffer|ArrayBufferView plaintext,
+	CryptoKey key
+);
+
+Promise<ArrayBuffer> decrypt(
+	ArrayBuffer|ArrayBufferView ciphertext,
+	CryptoKey key
+);
 ```
 
 ### Authentication
 
 ```javaScript
 Promise<CryptoKey> newMacKey();
-Promise<ArrayBuffer> generateMac(ArrayBuffer|ArrayBufferView message, CryptoKey key);
-Promise<boolean> verifyMac(ArrayBuffer|ArrayBufferView mac, ArrayBuffer|ArrayBufferView message, CryptoKey key);
+
+Promise<ArrayBuffer> generateMac(
+	ArrayBuffer|ArrayBufferView message,
+	CryptoKey key
+);
+
+Promise<boolean> verifyMac(
+	ArrayBuffer|ArrayBufferView mac,
+	ArrayBuffer|ArrayBufferView message,
+	CryptoKey key
+);
 ```
 
 ### Signing
 
 ```javaScript
 Promise<CryptoKeyPair> newSigningKey();
-Promise<ArrayBuffer> sign(ArrayBuffer|ArrayBufferView message, CryptoKey privateKey);
-Promise<boolean> verify(ArrayBuffer|ArrayBufferView signature, ArrayBuffer|ArrayBufferView message, CryptoKey publicKey);
+
+Promise<ArrayBuffer> sign(
+	ArrayBuffer|ArrayBufferView message,
+	CryptoKey privateKey
+);
+
+Promise<boolean> verify(
+	ArrayBuffer|ArrayBufferView signature,
+	ArrayBuffer|ArrayBufferView message,
+	CryptoKey publicKey
+);
 ```
 
 ### Hashing
 
 ```javaScript
 Promise<ArrayBuffer> hashPassword(string password);
-Promise<boolean> verifyPasswordHash(ArrayBuffer|ArrayBufferView hash, ArrayBuffer|ArrayBufferView password);
+
+Promise<boolean> verifyPasswordHash(
+	ArrayBuffer|ArrayBufferView hash,
+	ArrayBuffer|ArrayBufferView password
+);
 ```
 
 ## Examples
