@@ -30,7 +30,7 @@ Promise<ArrayBuffer> generateMac(
 	CryptoKey key
 );
 
-Promise<boolean> verifyMac(
+Promise<Boolean> verifyMac(
 	ArrayBuffer|ArrayBufferView mac,
 	ArrayBuffer|ArrayBufferView message,
 	CryptoKey key
@@ -47,7 +47,7 @@ Promise<ArrayBuffer> sign(
 	CryptoKey privateKey
 );
 
-Promise<boolean> verify(
+Promise<Boolean> verify(
 	ArrayBuffer|ArrayBufferView signature,
 	ArrayBuffer|ArrayBufferView message,
 	CryptoKey publicKey
@@ -57,11 +57,11 @@ Promise<boolean> verify(
 ### Hashing
 
 ```javaScript
-Promise<ArrayBuffer> hashPassword(string password);
+Promise<ArrayBuffer> hashPassword(String password);
 
-Promise<boolean> verifyPasswordHash(
+Promise<Boolean> verifyPasswordHash(
 	ArrayBuffer|ArrayBufferView hash,
-	ArrayBuffer|ArrayBufferView password
+	String password
 );
 ```
 
