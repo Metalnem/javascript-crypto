@@ -2,6 +2,16 @@
 
 Web Cryptography API [[1](https://www.w3.org/TR/WebCryptoAPI/)] is an standardized interface allowing a script to use basic cryptographic operations. However, it exposes a bunch of primitives that are very easy to misuse, or are inherently unsafe. This library demonstrates safe usage of Web Cryptography API. It tries to select safe algorithms and parameters and help you avoid most of the common mistakes. You can either use it as a library, or just copy and paste functions that you need. It was heavily inspired by George Tankersley's cryptopasta library [[2](https://github.com/gtank/cryptopasta)], from which it borrows most of the recommendations.
 
+## API
+
+### Encryption
+
+```javaScript
+Promise<CryptoKey> newEncryptionKey();
+Promise<ArrayBuffer> encrypt(ArrayBuffer|ArrayBufferView plaintext, CryptoKey key);
+Promise<ArrayBuffer> decrypt(ArrayBuffer|ArrayBufferView ciphertext, CryptoKey key);
+```
+
 ## Examples
 
 ### Encryption
