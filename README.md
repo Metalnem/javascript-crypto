@@ -8,7 +8,19 @@ This library was heavily inspired by George Tankersley's cryptopasta library [[2
 
 ### Encryption
 
-When encrypting data, you should always always use authenticated encryption modes. The only authenticated mode offered by Web Cryptography API is AES-GCM, so that mode was used in this library. Key size is fixed to 256 bits, and nonces are randomly generated (for more info, see the discussion about randomly generated nonces at [[10](https://github.com/gtank/cryptopasta/issues/14)].
+When encrypting data, you should always use authenticated encryption modes. The only authenticated mode offered by Web Cryptography API is AES-GCM, so that mode was used in this library. Key size is fixed to 256 bits, and nonces are randomly generated (for more info, see the discussion about randomly generated nonces at [[10](https://github.com/gtank/cryptopasta/issues/14)]).
+
+### Authentication
+
+Authentication is done using HMAC with SHA-256 hash function. HMAC is the only algorithm that you want to use for authentication, so the only choice was which hash function to use, and SHA-256 is pretty standard choice.
+
+### Signing
+
+ECDSA algorithm on P-256 curve was selected for asymmetric signatures. There are better choices here, but none of them is available in Web Cryptography API. RSA-PSS could also have been used, but you should probably stay away from RSA and use elliptic curves instead.
+
+### Hashing
+
+Password hashing is not terribly useful in web browser, but it's nevertheless provided here for the sake of completeness. The only available password hashing algorithm in Web Cryptography API is PBKDF2, so that was the logical choice here.
 
 ## Word of caution
 
