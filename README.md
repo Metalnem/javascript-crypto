@@ -142,8 +142,12 @@ valid.then(valid => console.log(valid));
 ### Marshalling
 ```javaScript
 const key = window.newEncryptionKey();
+
 const exported = key.then(window.exportEncryptionKey);
+exported.then(exported => console.log(new Uint8Array(exported)));
+
 const imported = exported.then(window.importEncryptionKey);
+// Here you can encrypt messages using imported key.
 ```
 
 ## Browser compatibility
