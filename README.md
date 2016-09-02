@@ -12,7 +12,7 @@ When encrypting data, you should always always use authenticated encryption mode
 
 ## Word of caution
 
-You should never implement crypto yourself (especially in JavaScript). Just use TLS. If you want to know more about why JavaScript cryptography is a bad idea, go to [[5](https://rdist.root.org/2010/11/29/final-post-on-javascript-crypto/)], [[7](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/)] or [[8](https://tonyarcieri.com/whats-wrong-with-webcrypto)]. That being said, there are some use cases for using JavaScript crypto. Read more about that at [[6](https://vnhacker.blogspot.rs/2014/06/why-javascript-crypto-is-useful.html)] or [[11](https://www.w3.org/TR/2013/WD-webcrypto-usecases-20130108/)].
+You should never implement crypto yourself (especially in JavaScript). Just use TLS. If you want to know more about why JavaScript cryptography is a bad idea, go to [[5](https://rdist.root.org/2010/11/29/final-post-on-javascript-crypto/)], [[7](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/)] or [[8](https://tonyarcieri.com/whats-wrong-with-webcrypto)]. That being said, there are some use cases for JavaScript crypto. Read more about that at [[6](https://vnhacker.blogspot.rs/2014/06/why-javascript-crypto-is-useful.html)] or [[11](https://www.w3.org/TR/2013/WD-webcrypto-usecases-20130108/)].
 
 ## API
 
