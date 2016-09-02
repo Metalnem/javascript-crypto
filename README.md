@@ -65,6 +65,17 @@ Promise<Boolean> verifyPasswordHash(
 );
 ```
 
+### Marshalling
+
+```javaScript
+Promise<ArrayBuffer> exportEncryptionKey(CryptoKey key);
+Promise<CryptoKey> importEncryptionKey(ArrayBuffer key);
+Promise<ArrayBuffer> exportPublicKey(CryptoKey key);
+Promise<CryptoKey> importPublicKey(ArrayBuffer key);
+Promise<ArrayBuffer> exportPrivateKey(CryptoKey key);
+Promise<CryptoKey> importPrivateKey(ArrayBuffer key);
+```
+
 ## Examples
 
 ### Encryption
@@ -124,6 +135,13 @@ hash.then(hash => console.log(new Uint8Array(hash)));
 
 const valid = hash.then(hash => window.verifyPasswordHash(hash, password));
 valid.then(valid => console.log(valid));
+```
+
+### Marshalling
+```javaScript
+const key = window.newEncryptionKey();
+const exported = key.then(window.exportEncryptionKey);
+const imported = exported.then(window.importEncryptionKey);
 ```
 
 ## Browser compatibility
