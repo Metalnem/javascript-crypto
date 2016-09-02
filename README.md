@@ -1,6 +1,18 @@
 # JavaScript cryptography [![Code Climate](https://codeclimate.com/github/Metalnem/javascript-crypto/badges/gpa.svg)](https://codeclimate.com/github/Metalnem/javascript-crypto) [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/metalnem/javascript-crypto/master/LICENSE)
 
-Web Cryptography API [[1](https://www.w3.org/TR/WebCryptoAPI/)] is an standardized interface allowing a script to use basic cryptographic operations. However, it exposes a bunch of primitives that are very easy to misuse, or are inherently unsafe. This library demonstrates safe usage of Web Cryptography API. It tries to select safe algorithms and parameters and help you avoid most of the common mistakes. You can either use it as a library, or just copy and paste functions that you need. It was heavily inspired by George Tankersley's cryptopasta library [[2](https://github.com/gtank/cryptopasta)], from which it borrows most of the recommendations.
+Web Cryptography API [[1](https://www.w3.org/TR/WebCryptoAPI/)] is an standardized interface allowing a script to use basic cryptographic operations. However, it exposes a bunch of primitives that are very easy to misuse, or are inherently unsafe. This library demonstrates safe usage of Web Cryptography API. It tries to select safe algorithms and parameters and help you avoid most of the common mistakes. You can either use it as a library, or just copy and paste functions that you need.
+
+## Design choices
+
+This library was heavily inspired by George Tankersley's cryptopasta library [[2](https://github.com/gtank/cryptopasta)], from which it borrows most of the design choices. You can find more information about selecting right cryptographic primitives at [[3](http://www.daemonology.net/blog/2009-06-11-cryptographic-right-answers.html)] or [[4](https://gist.github.com/tqbf/be58d2d39690c3b366ad)].
+
+### Encryption
+
+When encrypting data, you should always always use authenticated encryption modes. The only authenticated mode offered by Web Cryptography API is AES-GCM, so that mode was used in this library. Key size is fixed to 256 bits, and nonces are randomly generated (for more info, see the discussion about randomly generated nonces at [[10](https://github.com/gtank/cryptopasta/issues/14)].
+
+## Word of caution
+
+You should never implement crypto yourself (especially in JavaScript). Just use TLS. If you want to know more about why JavaScript cryptography is a bad idea, go to [[5](https://rdist.root.org/2010/11/29/final-post-on-javascript-crypto/)], [[7](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/)] or [[8](https://tonyarcieri.com/whats-wrong-with-webcrypto)]. That being said, there are some use cases for using JavaScript crypto. Read more about that at [[6](https://vnhacker.blogspot.rs/2014/06/why-javascript-crypto-is-useful.html)] or [[11](https://www.w3.org/TR/2013/WD-webcrypto-usecases-20130108/)].
 
 ## API
 
