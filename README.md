@@ -70,8 +70,10 @@ Promise<Boolean> verifyPasswordHash(
 ```javaScript
 Promise<ArrayBuffer> exportEncryptionKey(CryptoKey key);
 Promise<CryptoKey> importEncryptionKey(ArrayBuffer key);
+
 Promise<ArrayBuffer> exportPublicKey(CryptoKey key);
 Promise<CryptoKey> importPublicKey(ArrayBuffer key);
+
 Promise<ArrayBuffer> exportPrivateKey(CryptoKey key);
 Promise<CryptoKey> importPrivateKey(ArrayBuffer key);
 ```
