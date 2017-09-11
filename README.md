@@ -170,8 +170,8 @@ exported.then(exported => console.log(new Uint8Array(exported)));
 
 const ciphertext = exported.then(window.importEncryptionKey).then(key => {
 	const message = "I'm cooking MC's like a pound of bacon";
-    const encoded = new TextEncoder('utf-8').encode(message);
-    return window.encrypt(encoded, key);
+	const encoded = new TextEncoder('utf-8').encode(message);
+	return window.encrypt(encoded, key);
 });
 
 ciphertext.then(ciphertext => console.log(new Uint8Array(ciphertext)));
@@ -195,7 +195,7 @@ ciphertext.then(ciphertext => console.log(new Uint8Array(ciphertext)));
 [3] [Cryptographic Right Answers](http://www.daemonology.net/blog/2009-06-11-cryptographic-right-answers.html)   
 [4] [(Updated) Cryptographic Right Answers](https://gist.github.com/tqbf/be58d2d39690c3b366ad)  
 [5] [Final post on Javascript crypto](https://rdist.root.org/2010/11/29/final-post-on-javascript-crypto/)  
-[6] [Javascript Crypto Is Useful](https://vnhacker.blogspot.rs/2014/06/why-javascript-crypto-is-useful.html)  
+[6] [Javascript Crypto Is Useful](https://vnhacker.blogspot.com/2014/06/why-javascript-crypto-is-useful.html)  
 [7] [Javascript Cryptography Considered Harmful](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/)  
 [8] [What’s wrong with in-browser cryptography?](https://tonyarcieri.com/whats-wrong-with-webcrypto)  
 [9] [Nonce-Disrespecting Adversaries: Practical Forgery Attacks on GCM in TLS](https://www.usenix.org/system/files/conference/woot16/woot16-paper-bock.pdf)  
